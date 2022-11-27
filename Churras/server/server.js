@@ -1,14 +1,38 @@
-var http = require("http");
-const port = 3879;
-http.createServer(function (request, response) {
+const http = require('http');
+const fs = require('fs');
 
-   // Configure o resposta HTTP header com o HTTP status e Content type
-   response.writeHead(200, {'Content-Type': 'text/plain'});
+function reqListener(req, res) {
+    const url = req.url;
+    const method = req.method;
 
-   // Envie a resposta do body "Hello World"
-   response.end();
+    if (url === '/') {
+        res.write('<html>');
+        res.write('<head><title>Enter</title></head>')
+        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>')
+        res.write('</html');
+        return res.end();
+    }
 
-}).listen(port);
+    if (url === '/message' && method === 'POST') {
+        const body = [];
+        req.on('data', (chunk) => {
+            console.log(chunk);
+            body.push(chunk);
+        })
 
-// Imprima URL para acessar o servidor
-console.log('Server running at http://127.0.0.1:'+ port + '');
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            const message = parsedBody.split('=')[1];
+            fs.writeFile('message.txt', message, (err) => {
+                res.statusCode = 302;
+                res.setHeader('Location', '/');
+                return res.end();
+            });
+        });
+    }
+
+}
+
+const server = http.createServer(reqListener)
+
+server.listen(3000);

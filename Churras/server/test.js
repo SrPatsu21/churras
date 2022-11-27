@@ -1,15 +1,24 @@
-//Chame o módulo HTTP
-var http = require("http");
+const http = require('http');
+const fs = require('fs');
+const port = 3729;
 
-//Crie um servidor HTTP para ouvir as requisições na porta 8000
-http.createServer(function (request, response) {
+function reqListener(req, res) {
+    const url = req.url;
+    const method = req.method;
 
-   // Configure o resposta HTTP header com o HTTP status e Content type
-   response.writeHead(200, {'Content-Type': 'text/plain'});
+    if (url === '/') {
+      res.write('<html>');
+      res.write('<head><title>Enter</title></head>')
+      res.write('<body>  window.location.href = "http://www.devmedia.com.br";');
+      return res.end();
+  }
 
-   // Envie a resposta do body "Hello World"
-   response.end('Hello World\n');
-}).listen(8000);
+    if (url === '/Home') {
+    }
 
-// Imprima URL para acessar o servidor
-console.log('Server running at http://127.0.0.1:8000/')
+}
+
+const server = http.createServer(reqListener)
+server.listen(port);
+
+console.log(`http://127.0.0.1:${port}`);
