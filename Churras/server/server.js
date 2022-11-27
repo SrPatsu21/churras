@@ -1,38 +1,53 @@
-const http = require('http');
-const fs = require('fs');
+//setting vars
+const { readFile } = require(`fs`);
+var http = require(`http`);
+const port = 3729;
+const ip = `localhost`;
+var pageTitle = `loading`;
+var pageTemplate = 
+`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${pageTitle}</title>
+    <script src="../FrontEnd/jquery/jquery-3.6.1.min.js"></script>
+    <script>
+        $("header").load("../FrontEnd/a.html")
+        $("main").load("../FrontEnd/a.html")
+        $("fotter").load("../FrontEnd/a.html")
+      </script>
+</head>
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+</body>
+</html>
+`
 
-function reqListener(req, res) {
-    const url = req.url;
-    const method = req.method;
+//create server
+http.createServer(
+    function page(req, res){
+        if (req.url == `/home`) {
+            //title
+            var pageTitle = `home`;
+            //page
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            //render file
+            res.write(pageTemplate);
+            //send
+            res.end();
 
-    if (url === '/') {
-        res.write('<html>');
-        res.write('<head><title>Enter</title></head>')
-        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>')
-        res.write('</html');
-        return res.end();
+        }else{
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write('not found');
+            res.end();
+        }
     }
+).listen(port, ip);
 
-    if (url === '/message' && method === 'POST') {
-        const body = [];
-        req.on('data', (chunk) => {
-            console.log(chunk);
-            body.push(chunk);
-        })
-
-        req.on('end', () => {
-            const parsedBody = Buffer.concat(body).toString();
-            const message = parsedBody.split('=')[1];
-            fs.writeFile('message.txt', message, (err) => {
-                res.statusCode = 302;
-                res.setHeader('Location', '/');
-                return res.end();
-            });
-        });
-    }
-
-}
-
-const server = http.createServer(reqListener)
-
-server.listen(3000);
+//print out the HREF
+console.log(`Server running...\nhttp://${ip}:${port}`);
