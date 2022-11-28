@@ -13,11 +13,11 @@ var pageTemplate =
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${pageTitle}</title>
-    <script src="../FrontEnd/jquery/jquery-3.6.1.min.js"></script>
+    <script src="./FrontEnd/jquery/jquery-3.6.1.min.js"></script>
     <script>
-        $("header").load("../FrontEnd/a.html")
-        $("main").load("../FrontEnd/a.html")
-        $("fotter").load("../FrontEnd/a.html")
+        $("header").load("./FrontEnd/a.html")
+        $("main").load("./FrontEnd/a.html")
+        $("fotter").load("./FrontEnd/a.html")
       </script>
 </head>
 <body>
