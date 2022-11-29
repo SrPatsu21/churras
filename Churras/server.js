@@ -4,7 +4,7 @@ var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
 var pageTitle = `loading`;
-var pageTemplate = 
+var pageHead = 
 `
 <!DOCTYPE html>
 <html lang="en">
@@ -12,15 +12,18 @@ var pageTemplate =
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${pageTitle}</title>
     <script src="FrontEnd/jquery/jquery-3.6.1.min.js"></script>
-    <script>
-        $("#header").load("FrontEnd/a.html #header")
-    </script>
 </head>
 <body>
-    <header id="header"></header>
-
+`
+var pageBody = 
+`
+<header></header>
+<main></main>
+<footer></footer>
+`
+var pageClose = 
+`
 </body>
 </html>
 `
@@ -30,11 +33,23 @@ http.createServer(
     function page(req, res){
         if (req.url == `/home`) {
             //title
-            var pageTitle = `home`;
+            var pageTitle = `<title>home</title>`;
+            
             //page
             res.writeHead(200, {'Content-Type': 'text/html'});
+
             //render file
-            res.write(pageTemplate);
+            res.write(pageHead);
+            res.write(pageTitle);
+            res.write(pageBody);
+
+            //pages to load
+            res.write(`
+                <script>
+                $("#header").load("a.txt");
+                </script>`);
+            res.write(pageClose);
+
             //send
             res.end();
 
