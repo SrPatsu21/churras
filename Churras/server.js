@@ -66,14 +66,22 @@ http.createServer(
             res.write(pageTitle);
             res.write(pageBody);
             res.write(req.url);
-
-            //pages to load
             res.write(`
                 <script>
                 $("header").load("a.txt");
                 </script>`);
             res.write(pageClose);
 
+            //send
+            res.end();
+
+        }else if (req.url == `/` || req.url == `` || req.url == null){
+            //title
+            var pageTitle = `<title>loading</title>`;
+            //page
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(pageTitle);
+            res.write('no page');
             //send
             res.end();
         }
