@@ -54,7 +54,30 @@ http.createServer(
             //send
             res.end();
 
-        }else if (req.url == ` ` || req.url == null) {
+        }else if (req.url == `/main`) {
+            //title
+            var pageTitle = `<title>main</title>`;
+
+            //page
+            res.writeHead(200, {'Content-Type': 'text/html'});
+
+            //render file
+            res.write(pageHead);
+            res.write(pageTitle);
+            res.write(pageBody);
+            res.write(req.url);
+
+            //pages to load
+            res.write(`
+                <script>
+                $("header").load("a.txt");
+                </script>`);
+            res.write(pageClose);
+
+            //send
+            res.end();
+
+        }else {
             var pageTitle = `<title>loading</title>`;
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(pageTitle);
@@ -65,4 +88,4 @@ http.createServer(
 ).listen(port, ip);
 
 //print out the HREF
-console.log(`Server running...\nhttp://${ip}:${port}\nhttp://localhost:3729/home`);
+console.log(`Server running...\nhttp://localhost:3729/home`);
