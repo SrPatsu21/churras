@@ -3,7 +3,6 @@ const { readFile } = require(`fs`);
 var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
-var pageTitle = `loading`;
 var pageHead = 
 `
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ var pageHead =
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="FrontEnd/jquery/jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 `
@@ -31,10 +30,11 @@ var pageClose =
 //create server
 http.createServer(
     function page(req, res){
+
         if (req.url == `/home`) {
             //title
             var pageTitle = `<title>home</title>`;
-            
+
             //page
             res.writeHead(200, {'Content-Type': 'text/html'});
 
@@ -42,24 +42,27 @@ http.createServer(
             res.write(pageHead);
             res.write(pageTitle);
             res.write(pageBody);
+            res.write(req.url);
 
             //pages to load
             res.write(`
                 <script>
-                $("#header").load("a.txt");
+                $("header").load("a.txt");
                 </script>`);
             res.write(pageClose);
 
             //send
             res.end();
 
-        }else{
+        }else if (req.url == ` ` || req.url == null) {
+            var pageTitle = `<title>loading</title>`;
             res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write('not found');
+            res.write(pageTitle);
+            res.write('no page');
             res.end();
         }
     }
 ).listen(port, ip);
 
 //print out the HREF
-console.log(`Server running...\nhttp://${ip}:${port}`);
+console.log(`Server running...\nhttp://${ip}:${port}\nhttp://localhost:3729/home`);
