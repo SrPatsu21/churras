@@ -76,13 +76,6 @@ http.createServer(
 
             //send
             res.end();
-
-        }else {
-            var pageTitle = `<title>loading</title>`;
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(pageTitle);
-            res.write('no page');
-            res.end();
         }
     }
 ).listen(port, ip);
