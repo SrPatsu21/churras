@@ -1,23 +1,8 @@
 //setting vars
-const fs = require('fs');
-fs.readFile('Churras/a.txt', 'utf8', (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log(data);
-});
-
-
 var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
-
-
-
-/*async function getFile(file) {
-   
-  }*/
+const fs = require('fs');
 var pageHead =
 `
 <!DOCTYPE html>
@@ -39,20 +24,29 @@ var pagenull =
 `
 nao a nada nessa pagina
 `
+//setting functions
+const getFile = async filePath => {
+    try {
+      const data = await fs.promises.readFile(filePath, 'utf8')
+      console.log(data);
+      return data
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
 
 //create server
 http.createServer(
-    function page(req, res){
+    async function page(req, res){
 
         //if (req.url == `/home`) {
             //setting vars
-            var pageTitle = `<title>home</title>`;
-
-
+            var pageTitle = `<title>${await getFile('Churras/title.txt')}</title>`;
 
             var pageBody = 
             `
-            <header></header>
+            <header>${await getFile(`Churras/a.txt`)}</header>
             
 
             <main></main>
