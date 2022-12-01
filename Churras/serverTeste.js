@@ -18,7 +18,6 @@ var pageClose =
 </body>
 </html>
 `
-
 //setting functions
 const getFile = async filePath => {
     try {
@@ -32,7 +31,7 @@ const getFile = async filePath => {
 
 //create server
 http.createServer(
-    async function page(req, res){
+    function page(req, res){
         
         if (req.url == `/home`) {
             //setting vars
@@ -42,7 +41,7 @@ http.createServer(
             var pageBody = 
             `
 
-            <header>${await getFile(`Churras/a.json`)}</header>
+            <header>${await(getFile(`Churras/a.json`))}</header>
             
             <main></main>
 
@@ -60,31 +59,6 @@ http.createServer(
             //send
             res.end();
             
-
-        } else if (req.url == `/` || req.url == `` || req.url == null){
-                //setting vars
-                var pageTitle = `
-                <title>"NOT FOUND"</title>
-                `;
-    
-                var pageBody = 
-                `
-                <body>
-                <header>${getFile(`Churras/FrontEnd/pageNull.html`)}</header>
-                <main></main>
-                <footer></footer>
-                `;
-    
-                //page
-                res.writeHead(200, {'Content-Type': 'text/html'});
-    
-                var page =  pageHead + pageTitle + pageBody + pageClose;
-    
-                //render page and file
-                res.write(page);
-    
-                //send
-                res.end();
         }
     }
 ).listen(port, ip);
