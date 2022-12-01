@@ -1,0 +1,17 @@
+/*static*/
+body, html{min-width: 100%;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
+p{margin: 0px;}
+/*flex*/
+.flex{display: flex;}
+.flex-x-center{justify-content: center;}
+.flex-y-center{align-items: center;}
+/*width*/
+.w100{width: 100%;}
+/*heigth*/
+.h100{height: 100%;}
+/*text*/
+.uppc{text-transform: uppercase;}
+.fz3{font-size: 3rem;}
+.txtc{text-align: center;}
+/*text color*/
+.txtred{color: #FF0000;}
