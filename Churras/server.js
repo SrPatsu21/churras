@@ -25,28 +25,27 @@ nao a nada nessa pagina
 //setting functions
 const getFile = async filePath => {
     try {
-      const data = await fs.promises.readFile(filePath, 'utf8')
-      return data
+      const data = await fs.promises.readFile(filePath, 'utf8');
+      return data;
     }
     catch(err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
 //create server
 http.createServer(
     async function page(req, res){
-
+        
         if (req.url == `/home`) {
             //setting vars
             var pageTitle = `
             <title>HOME</title>
             `;
-
             var pageBody = 
             `
 
-            <header>${await getFile(`Churras/a.txt`)}</header>
+            <header>${await getFile(`Churras/a.json`)}</header>
             
             <main></main>
 
@@ -63,6 +62,7 @@ http.createServer(
 
             //send
             res.end();
+            
 
         } else if (req.url == `/` || req.url == `` || req.url == null){
                 //setting vars
@@ -73,7 +73,7 @@ http.createServer(
                 var pageBody = 
                 `
                 <body>
-                <header>${await getFile(`Churras/FrontEnd/pageNull.html`)}</header>
+                <header>${getFile(`Churras/FrontEnd/pageNull.html`)}</header>
                 <main></main>
                 <footer></footer>
                 `;
