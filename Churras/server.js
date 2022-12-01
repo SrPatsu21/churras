@@ -1,9 +1,24 @@
 //setting vars
-const { readFile } = require(`fs`);
+const fs = require('fs');
+fs.readFile('Churras/a.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(data);
+});
+
+
 var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
-var pageHead = 
+
+
+
+/*async function getFile(file) {
+   
+  }*/
+var pageHead =
 `
 <!DOCTYPE html>
 <html lang="en">
@@ -15,46 +30,49 @@ var pageHead =
 </head>
 <body>
 `
-var pageBody = 
-`
-<header></header>
-<main></main>
-<footer></footer>
-`
 var pageClose = 
 `
 </body>
 </html>
+`
+var pagenull = 
+`
+nao a nada nessa pagina
 `
 
 //create server
 http.createServer(
     function page(req, res){
 
-        if (req.url == `/home`) {
-            //title
+        //if (req.url == `/home`) {
+            //setting vars
             var pageTitle = `<title>home</title>`;
+
+
+
+            var pageBody = 
+            `
+            <header></header>
+            
+
+            <main></main>
+
+            <footer></footer>
+            `;
 
             //page
             res.writeHead(200, {'Content-Type': 'text/html'});
 
-            //render file
-            res.write(pageHead);
-            res.write(pageTitle);
-            res.write(pageBody);
-            res.write(req.url);
+            var page =  pageHead + pageTitle + pageBody + pageClose;
 
-            //pages to load
-            res.write(`
-                <script>
-                $("header").load("a.txt");
-                </script>`);
-            res.write(pageClose);
+            //render page and file
+            res.write(req.url);
+            res.write(page);
 
             //send
             res.end();
 
-        }else if (req.url == `/main`) {
+        /*} else if (req.url == `/main`) {
             //title
             var pageTitle = `<title>main</title>`;
 
@@ -84,9 +102,9 @@ http.createServer(
             res.write('no page');
             //send
             res.end();
-        }
+        }*/
     }
 ).listen(port, ip);
 
 //print out the HREF
-console.log(`Server running...\nhttp://localhost:3729/home`);
+console.log(`Server running...\nhttp://${ip}:${port}/home`);
