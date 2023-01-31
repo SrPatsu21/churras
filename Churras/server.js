@@ -18,44 +18,48 @@ const getFile = async filePath => {
 
 //create server
 http.createServer(
+
   async function page(req, res){
       
-  //calling parts
-  const pageHead =
-    `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="http://localhost:3729:/Churras/FrontEnd/css/style.css">
-    `;
-  const pageHeader = await getFile(`Churras/FrontEnd/pageNull.html`);
-  const pageFotter = await getFile(`Churras/FrontEnd/pageNull.html`);
-  const pageNull = await getFile(`Churras/FrontEnd/pageNull.html`);
-  const pageBody = await getFile(`Churras/FrontEnd/pageNull.html`);
-  const pageClose = `
-    </body>
-    </html>
-    `;
+        //calling parts
 
-        if (req.url == `/home`) {
-            //setting vars
-            var pageTitle = `
-            <title>HOME</title>
-            `;
+        const pageHead =
+          `
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <link rel="stylesheet" href="http://localhost:3729:/Churras/FrontEnd/css/style.css">
+          `;
+        const pageHeader = await getFile(`Churras/FrontEnd/pageNull.html`);
+        const pageFotter = await getFile(`Churras/FrontEnd/pageNull.html`);
+        const pageNull = await getFile(`Churras/FrontEnd/pageNull.html`);
+        const pageBody = await getFile(`Churras/FrontEnd/pageNull.html`);
+        const pageClose = `
+          </body>
+          </html>
+          `;
 
-            //page
-            res.writeHead(200, {'Content-Type': 'text/html'});
+          //criating pages
 
-            //render page and file
-            res.write(pageHead + pageTitle + pageBody + pageClose);
+            if (req.url == `/home`) {
+              //setting vars
+              var pageTitle = `
+              <title>HOME</title>
+              `;
 
-            //send
-            res.end();
+              //page
+              res.writeHead(200, {'Content-Type': 'text/html'});
 
-        } else if (req.url == `/` || req.url == `` || req.url == null){
+              //render page and file
+              res.write(pageHead + pageTitle + pageBody + pageClose);
+
+              //send
+              res.end();
+
+            } else if (req.url == `/` || req.url == `` || req.url == null){
                 //setting vars
                 var pageTitle = `
                 <title>"NOT FOUND"</title>
@@ -70,7 +74,8 @@ http.createServer(
                 //send
                 res.end();
             }
-        }
+  }
+
 ).listen(port, ip);
 
 //print out the HREF
