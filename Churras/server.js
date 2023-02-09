@@ -19,7 +19,7 @@ const getFile = async filePath => {
 //create server
 http.createServer(
 
-  async function page(req, res){
+  async function page(request, response){
       
         //calling parts
 
@@ -31,12 +31,11 @@ http.createServer(
               <meta charset="UTF-8">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <link rel="stylesheet" href="http://localhost:3729:/Churras/FrontEnd/css/style.css">
+              <style type="text/css">`+ (await getFile(`Churras/FrontEnd/css/style.css`)) +`</style>
           `;
         const pageHeader = await getFile(`Churras/FrontEnd/pageNull.html`);
         const pageFotter = await getFile(`Churras/FrontEnd/pageNull.html`);
         const pageNull = await getFile(`Churras/FrontEnd/pageNull.html`);
-        const pageBody = await getFile(`Churras/FrontEnd/pageNull.html`);
         const pageClose = `
           </body>
           </html>
@@ -44,37 +43,38 @@ http.createServer(
 
           //criating pages
 
-            if (req.url == `/home`) {
+          if (request.url == `/home`) {
+            //setting vars
+            var pageTitle = `
+            <title>HOME</title>
+            `;
+            let pageBody = await getFile(`Churras/FrontEnd/pageNull.html`);
+
+            //page
+            response.writeHead(200, {'Content-Type': 'text/html'});
+
+            //render page and file
+            response.write(pageHead + pageTitle + pageHeader + pageBody + pageFotter + pageClose);
+
+            //send
+            response.end();
+
+          } else if (request.url == `/` || request.url == `` || request.url == null){
               //setting vars
               var pageTitle = `
-              <title>HOME</title>
+              <title>"NOT FOUND"</title>
               `;
 
               //page
-              res.writeHead(200, {'Content-Type': 'text/html'});
-
+              response.writeHead(200, {'Content-Type': 'text/html'});
+      
               //render page and file
-              res.write(pageHead + pageTitle + pageBody + pageClose);
-
-              //send
-              res.end();
-
-            } else if (req.url == `/` || req.url == `` || req.url == null){
-                //setting vars
-                var pageTitle = `
-                <title>"NOT FOUND"</title>
-                `;
+              response.write(pageHead + pageTitle + pageNull);
   
-                //page
-                res.writeHead(200, {'Content-Type': 'text/html'});
-        
-                //render page and file
-                res.write(pageHead + pageTitle + pageNull);
-    
-                //send
-                res.end();
-            }
-  }
+              //send
+              response.end();
+          }
+}
 
 ).listen(port, ip);
 
