@@ -2,18 +2,11 @@
 var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
-const fs = require('fs');
+const fs = require(`fs`).promises;
 
 //setting functions
-const getFile = async filePath => {
-    try {
-      const data = await fs.promises.readFile(filePath, 'utf8');
-      //console.log(data);
-      return data;
-    }
-    catch(err) {
-      console.log(err);
-    }
+  const getFile = (dir) => {
+    return fs.readFile(dir);
   }
 
 //create server
@@ -42,37 +35,39 @@ http.createServer(
           `;
 
           //criating pages
+          switch (request.url) {
+            case `/home`:
+                  //setting vars
+                  var pageTitle = `
+                  <title>HOME</title>
+                  `;
+                  let pageBody = await getFile(`Churras/FrontEnd/pageNull.html`);
 
-          if (request.url == `/home`) {
-            //setting vars
-            var pageTitle = `
-            <title>HOME</title>
-            `;
-            let pageBody = await getFile(`Churras/FrontEnd/pageNull.html`);
+                  //page
+                  response.writeHead(200, {'Content-Type': 'text/html'});
 
-            //page
-            response.writeHead(200, {'Content-Type': 'text/html'});
+                  //render page and file
+                  response.write(pageHead + pageTitle + pageHeader + pageBody + pageFotter + pageClose);
 
-            //render page and file
-            response.write(pageHead + pageTitle + pageHeader + pageBody + pageFotter + pageClose);
+                  //send
+                  response.end();
+                  break;  
+          
+            default:
+                  //setting vars
+                  var pageTitle = `
+                  <title>"NOT FOUND"</title>
+                  `;
 
-            //send
-            response.end();
+                  //page
+                  response.writeHead(200, {'Content-Type': 'text/html'});
+          
+                  //render page and file
+                  response.write(pageHead + pageTitle + pageNull);
 
-          } else if (request.url == `/` || request.url == `` || request.url == null){
-              //setting vars
-              var pageTitle = `
-              <title>"NOT FOUND"</title>
-              `;
-
-              //page
-              response.writeHead(200, {'Content-Type': 'text/html'});
-      
-              //render page and file
-              response.write(pageHead + pageTitle + pageNull);
-  
-              //send
-              response.end();
+                  //send
+                  response.end();
+                  break;
           }
 }
 
