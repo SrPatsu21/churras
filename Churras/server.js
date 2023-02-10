@@ -8,7 +8,7 @@ const fs = require(`fs`).promises;
   const getFile = (dir) => {
     return fs.readFile(dir);
   }
-  
+
 //create server
 http.createServer(
 
@@ -24,10 +24,8 @@ http.createServer(
               <meta charset="UTF-8">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <link rel="stylesheet" href="/FrontEnd/css/style.css">
-              
+              <style type="text/css">`+ (await getFile(`Churras/FrontEnd/css/style.css`)) +`</style>
           `;
-          /*<style type="text/css">`+ (await getFile(`Churras/FrontEnd/css/style.css`)) +`</style>*/
         const pageHeader = await getFile(`Churras/FrontEnd/pageNull.html`);
         const pageFotter = await getFile(`Churras/FrontEnd/pageNull.html`);
         const pageNull = await getFile(`Churras/FrontEnd/pageNull.html`);
