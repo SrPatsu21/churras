@@ -26,8 +26,8 @@ http.createServer(
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <style type="text/css">`+ (await getFile(`Churras/FrontEnd/css/style.css`)) +`</style>
           `;
-        const pageHeader = await getFile(`Churras/FrontEnd/pageNull.html`);
-        const pageFotter = await getFile(`Churras/FrontEnd/pageNull.html`);
+        const pageHeader = await getFile(`Churras/FrontEnd/pageHeader.html`);
+        const pageFooter = await getFile(`Churras/FrontEnd/pageFooter.html`);
         const pageNull = await getFile(`Churras/FrontEnd/pageNull.html`);
         const pageClose = `
           </body>
@@ -47,7 +47,7 @@ http.createServer(
                   response.writeHead(200, {'Content-Type': 'text/html'});
 
                   //render page and file
-                  response.write(pageHead + pageTitle + pageHeader + pageBody + pageFotter + pageClose);
+                  response.write(pageHead + pageTitle + pageHeader + pageBody + pageFooter + pageClose);
 
                   //send
                   response.end();

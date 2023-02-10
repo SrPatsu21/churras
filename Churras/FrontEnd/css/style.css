@@ -3,15 +3,52 @@ body, html{min-width: 100%;min-height: 100vh; margin: 0px; font-family: Verdana,
 p{margin: 0px;}
 /*flex*/
 .flex{display: flex;}
-.flex-x-center{justify-content: center;}
-.flex-y-center{align-items: center;}
+    /*flex-direction*/
+    .flex-row{flex-direction: row;}
+    .flex-row-rev{flex-direction: row-reverse;}
+    .flex-col{flex-direction: column;}
+    .flex-col-rev{flex-direction: column-reverse;}
+
+    /*flex-warp*/
+    .flex-w{flex-wrap: wrap;}
+    .flex-nw{flex-wrap: nowrap;}
+    /*justify-content*/
+    .flex-x-center{justify-content: center;}
+    .flex-x-start{justify-content: start;}
+    .flex-x-end{justify-content: end;}
+    .flex-x-between{justify-content: space-between;}
+    .flex-x-around{justify-content: space-around;}
+    .flex-x-evenly{justify-content: space-evenly;}
+    /*align-items*/
+    .flex-y-center{align-items: center;}
+    .flex-y-start{align-items: flex-start;}
+    .flex-y-end{align-items: flex-end;}
+    .flex-y-stretch{align-items: stretch;}
+    .flex-y-baseline{align-items: baseline;}
+    /*align-content*/
+    .flex-c-center{align-content: center;}
+    .flex-c-start{align-content: flex-start;}
+    .flex-c-end{align-content: flex-end;}
+    .flex-c-stretch{align-content: stretch;}
+    .flex-c-between{align-content: space-between;}
+    .flex-c-around{align-content: space-around;}
+    /*align-self*/
+    .flex-si-auto {align-self: auto;}
+    .flex-si-start {align-self: flex-start;}
+    .flex-si-end {align-self: flex-end;}
+    .flex-si-center {align-self: center;}
+    .flex-si-baseline {align-self: baseline;}
+    .flex-si-stretch {align-self: stretch;}
 /*width*/
 .w100{width: 100%;}
 /*heigth*/
 .h100{height: 100%;}
 /*text*/
 .uppc{text-transform: uppercase;}
+.fz1{font-size: 1rem;}
+.fz2{font-size: 2rem;}
 .fz3{font-size: 3rem;}
+.fz4{font-size: 4rem;}
 .txtc{text-align: center;}
 /*text color*/
 .txtred{color: #FF0000;}
