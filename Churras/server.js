@@ -3,6 +3,7 @@ var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
 const fs = require(`fs`).promises;
+const door = process.env.PORT;
 
 //setting functions
   const getFile = (dir) => {
@@ -11,7 +12,6 @@ const fs = require(`fs`).promises;
 
 //create server
 http.createServer(
-
   async function page(request, response){
       
         //calling parts
@@ -69,9 +69,8 @@ http.createServer(
                   response.end();
                   break;
           }
-}
-
-).listen(port, ip);
-
-//print out the HREF
-console.log(`Server running...\nhttp://${ip}:${port}/home`);
+  }
+).listen(port, ip, ()=>{
+  //print out the HREF
+  console.log(`Server running...\nhttp://${ip}:${port}/home`)
+});
