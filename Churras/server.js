@@ -41,7 +41,7 @@ http.createServer(
                   var pageTitle = `
                   <title>HOME</title>
                   `;
-                  let pageBody = await getFile(`Churras/FrontEnd/pageNull.html`);
+                  let pageBody = await getFile(`Churras/FrontEnd/home.html`);
 
                   //page
                   response.writeHead(200, {'Content-Type': 'text/html'});

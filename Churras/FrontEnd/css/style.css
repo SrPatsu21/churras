@@ -3,8 +3,10 @@ body, html{min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana
 p{margin: 0px;}
 /*responsiveness*/
     /*mobile phones*/
-    [class*="col-w-"] {
-        min-width: 100%;
+    @media only screen and (max-width: 768px) {
+        [class*="col-w-"] {
+          min-width: 100%;
+        }
     }
     /*desktop*/
     @media only screen and (min-width: 768px) {
@@ -60,11 +62,9 @@ p{margin: 0px;}
     .flex-si-baseline {align-self: baseline;}
     .flex-si-stretch {align-self: stretch;}
 /*width*/
-.w100{width: 100%;}
-/*fractional width*/
-.fw1-12 
+.w100{width: 100vw;}
 /*heigth*/
-.h100{height: 100%;}
+.h100{height: 100vh;}
 /*text*/
 .uppc{text-transform: uppercase;}
 .fz1{font-size: 1rem;}
@@ -74,3 +74,6 @@ p{margin: 0px;}
 .txtc{text-align: center;}
 /*text color*/
 .txtred{color: #FF0000;}
+/*padding*/
+.pa-3px{padding: 3px;}
+.pa-5px{padding: 5px;}
