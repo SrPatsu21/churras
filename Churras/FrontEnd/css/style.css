@@ -1,5 +1,5 @@
 /*static*/
-body, html{min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
+body{min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
 p{margin: 0px;}
 /*responsiveness*/
     /*mobile phones*/
@@ -75,7 +75,8 @@ p{margin: 0px;}
 /*text color*/
 .txtred{color: #FF0000;}
 /*padding*/
-.pa-3px{padding: 3px;}
-.pa-5px{padding: 5px;}
 .pa-1pc{padding: 1%;}
 .pa-2pc{padding: 2%;}
+/*background*/
+.bg-header{background-color: #00ff00;}
+.bg-nav{background-color: #44FF44;}
