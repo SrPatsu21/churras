@@ -15,7 +15,7 @@ http.createServer(
       
         //calling parts
 
-        let staticHref = `http://${ip}:${port}/Churras/FrontEnd/`
+        let staticHref = `http://${ip}:${port}/static/`
 
         let pageHead =
           `
@@ -42,13 +42,10 @@ http.createServer(
           //criating pages
           switch (request.url) {
                   
-            case`/Churras/FrontEnd/css/style.css`:
+            case`/static/css/style.css`:
             /*https://www.w3schools.com/js/js_string_methods.asp*/
 
                   //setting vars
-                  var pageTitle = `
-                  <title>Css</title>
-                  `;
                   var pageMain = await getFile(`Churras/FrontEnd/css/style.css`);
 
                   //page
