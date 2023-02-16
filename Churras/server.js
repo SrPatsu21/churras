@@ -3,6 +3,7 @@ var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
 var fs = require(`fs`).promises;
+const local = `http://${ip}:${port}`
 
 //setting functions
   const getFile = (dir) => {
@@ -14,9 +15,6 @@ http.createServer(
   async function page(request, response){
       
         //calling parts
-
-        let staticHref = `http://${ip}:${port}/static/`
-
         let pageHead =
           `
           <!DOCTYPE html>
@@ -25,7 +23,7 @@ http.createServer(
               <meta charset="UTF-8">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <link rel="stylesheet" href="${staticHref}css/style.css">
+              <link rel="stylesheet" href="${local}/static/css/style.css">
               <style>
                 body {min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
               </style>
@@ -94,5 +92,5 @@ http.createServer(
   }
 ).listen(port, ip, ()=>{
   //print out the HREF
-  console.log(`Server running...\nhttp://${ip}:${port}/home`)
+  console.log(`Server running...\n${local}/home`)
 });
