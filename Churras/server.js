@@ -41,8 +41,7 @@ http.createServer(
           switch (request.url) {
                   
             case`/static/css/style.css`:
-            /*https://www.w3schools.com/js/js_string_methods.asp*/
-
+            
                   //setting vars
                   var pageMain = await getFile(`Churras/FrontEnd/css/style.css`);
 
@@ -50,11 +49,26 @@ http.createServer(
                   response.writeHead(200, {'Content-Type': 'text/css'});
 
                   //render page and file
-                  response.write(pageTitle + pageMain);
+                  response.write(pageMain);
 
                   //send
                   response.end();
                   break;
+                case`/static/img/images.jpg`:
+            
+                  //setting vars
+                  var pageMain = await getFile(`Churras/FrontEnd/img/images.jpg`);
+
+                  //page
+                  response.writeHead(200, {'Content-Type': 'text/html'});
+
+                  //render page and file
+                  response.write(pageMain);
+
+                  //send
+                  response.end();
+                  break;
+              
 
           case `/home`:
                   //setting vars
