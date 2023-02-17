@@ -1,6 +1,7 @@
 //setting vars
 var http = require(`http`);
 const port = 3729;
+const portStatic = 3730;
 const ip = `localhost`;
 var fs = require(`fs`).promises;
 const local = `http://${ip}:${port}`
@@ -9,6 +10,8 @@ const local = `http://${ip}:${port}`
   const getFile = (dir) => {
     return fs.readFile(dir);
   }
+
+/**/
 
 //create server
 http.createServer(
@@ -38,6 +41,7 @@ http.createServer(
           `;
 
           //criating pages
+          var baseUrl = request.url;
           switch (request.url) {
                   
             case`/static/css/style.css`:
