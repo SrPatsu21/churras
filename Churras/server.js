@@ -60,7 +60,7 @@ http.createServer(
                   var pageMain = await getFile(`Churras/FrontEnd/img/images.jpg`);
 
                   //page
-                  response.writeHead(200, {'Content-Type': 'text/html'});
+                  response.writeHead(200, {'Content-Type': 'jpg'});
 
                   //render page and file
                   response.write(pageMain);
