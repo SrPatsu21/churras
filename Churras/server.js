@@ -54,7 +54,7 @@ http.createServer(
                   //send
                   response.end();
                   break;
-                case`/static/img/images.jpg`:
+            case`/static/img/images.jpg`:
             
                   //setting vars
                   var pageMain = await getFile(`Churras/FrontEnd/img/images.jpg`);
@@ -70,7 +70,7 @@ http.createServer(
                   break;
               
 
-          case `/home`:
+            case `/home`:
                   //setting vars
                   var pageTitle = `
                   <title>HOME</title>
@@ -87,7 +87,7 @@ http.createServer(
                   response.end();
                   break;
               
-            default:
+              default:
                   //setting vars
                   var pageTitle = `
                   <title>"NOT FOUND"</title>
