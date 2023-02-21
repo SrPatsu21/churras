@@ -1,7 +1,6 @@
 //setting vars
 var http = require(`http`);
 const port = 3729;
-const portStatic = 3730;
 const ip = `localhost`;
 var fs = require(`fs`).promises;
 const local = `http://${ip}:${port}`
@@ -32,9 +31,9 @@ http.createServer(
               </style>
           `;
 
-        const pageHeader = await getFile(`Churras/FrontEnd/pageHeader.html`);
-        const pageFooter = await getFile(`Churras/FrontEnd/pageFooter.html`);
-        const pageNull = await getFile(`Churras/FrontEnd/pageNull.html`);
+        const pageHeader = await getFile(`Churras/static/pageHeader.html`);
+        const pageFooter = await getFile(`Churras/static/pageFooter.html`);
+        const pageNull = await getFile(`Churras/static/pageNull.html`);
         const pageClose = `
           </body>
           </html>
@@ -42,30 +41,39 @@ http.createServer(
 
         //defining url
 
-          var cutUrl = request.url.indexOf(`/`, 2);
-          var baseUrl = request.url.substring(cutUrl);
+          var cutUrl = request.url.indexOf(`/`, 1);
+          var baseUrl = request.url.substring(0,cutUrl);
+          var restUrl = request.url.slice(cutUrl);
 
         //criating pages 
-          switch (baseUrl.substring(cutUrl)) {
+          switch (baseUrl) {
 
-            case`/static/css/style.css`:
+            case`/static`:
+
+                /*if (restUrl.substring(-4) == `.css`) {
+                                    
+                } else {
+                  
+                }*/
+
+                //setting vars
+                var pageMain = await getFile(`Churras/`+ baseUrl + restUrl);
+
+                //page
+                response.writeHead(200, {'Content-Type': 'text/css'});
+
+                //render page and file
+                response.write(pageMain);
+                  
+                //send
+                response.end();
+            
+
+            break;
+            /*case`/static/img/images.jpg`:
             
                   //setting vars
-                  var pageMain = await getFile(`Churras/FrontEnd/css/style.css`);
-
-                  //page
-                  response.writeHead(200, {'Content-Type': 'text/css'});
-
-                  //render page and file
-                  response.write(pageMain);
-
-                  //send
-                  response.end();
-                  break;
-            case`/static/img/images.jpg`:
-            
-                  //setting vars
-                  var pageMain = await getFile(`Churras/FrontEnd/img/images.jpg`);
+                  var pageMain = await getFile(`Churras/static/img/images.jpg`);
 
                   //page
                   response.writeHead(200, {'Content-Type': 'jpg'});
@@ -76,14 +84,14 @@ http.createServer(
                   //send
                   response.end();
                   break;
-              
+              */
 
             case `/home`:
                   //setting vars
                   var pageTitle = `
                   <title>HOME</title>
                   `;
-                  var pageMain = await getFile(`Churras/FrontEnd/home.html`);
+                  var pageMain = await getFile(`Churras/static/home.html`);
 
                   //page
                   response.writeHead(200, {'Content-Type': 'text/html'});
@@ -105,7 +113,7 @@ http.createServer(
                   response.writeHead(200, {'Content-Type': 'text/html'});
           
                   //render page and file
-                  response.write(pageHead + pageTitle + pageNull);
+                  response.write(pageHead + pageTitle + pageNull + `\n` + cutUrl + `\n` + baseUrl + `\n` + restUrl);
 
                   //send
                   response.end();
