@@ -1,4 +1,5 @@
 //setting vars
+/*return fs.readFile(dir);*/
 var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
@@ -7,10 +8,28 @@ const local = `http://${ip}:${port}`
 
 //setting functions
   const getFile = (dir) => {
-    return fs.readFile(dir);
-  }
+    /*
+    fs.access(dir, fs.constants.R_OK, (err) => {
+      console.log('\n> Checking Permission for reading the file');
+      if (err)
+        return 'No Read access';
+      else
+        return 'File can be read';
+    });*/
 
-/**/
+    /*return fs.readFile(dir);*/
+
+    /*fs.access(dir, fs.constants.F_OK, (err) => {
+        console.log('\n> file (${dir}) not found');
+
+        if (err){
+          console.error(err);
+        }else{
+          return fs.readFile(dir);
+        }
+      }
+    );*/
+  }
 
 //create server
 http.createServer(
