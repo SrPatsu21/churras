@@ -40,10 +40,14 @@ http.createServer(
           </html>
           `;
 
-          //criating pages
-          var baseUrl = request.url;
-          switch (request.url) {
-                  
+        //defining url
+
+          var cutUrl = request.url.indexOf(`/`, 2);
+          var baseUrl = request.url.substring(cutUrl);
+
+        //criating pages 
+          switch (baseUrl.substring(cutUrl)) {
+
             case`/static/css/style.css`:
             
                   //setting vars
