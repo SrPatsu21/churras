@@ -8,27 +8,12 @@ const local = `http://${ip}:${port}`
 
 //setting functions
   const getFile = (dir) => {
-    /*
-    fs.access(dir, fs.constants.R_OK, (err) => {
-      console.log('\n> Checking Permission for reading the file');
-      if (err)
-        return 'No Read access';
-      else
-        return 'File can be read';
-    });*/
-
-    /*return fs.readFile(dir);*/
-
-    /*fs.access(dir, fs.constants.F_OK, (err) => {
-        console.log('\n> file (${dir}) not found');
-
-        if (err){
-          console.error(err);
-        }else{
-          return fs.readFile(dir);
-        }
+    return fs.readFile(dir, (err, data)=>{
+      if (err) {
+        return err;
       }
-    );*/
+      return data;
+    });
   }
 
 //create server
@@ -61,49 +46,30 @@ http.createServer(
         //defining url
 
           var cutUrl = request.url.indexOf(`/`, 1);
-          var baseUrl = request.url.substring(0,cutUrl);
+          if (cutUrl < 0) {
+            cutUrl = request.url.length;
+          }
+          var baseUrl = request.url.substring(-1,cutUrl);
           var restUrl = request.url.slice(cutUrl);
 
         //criating pages 
           switch (baseUrl) {
 
             case`/static`:
+                  //tip of file
+                  let dotcut = restUrl.indexOf(`.`);
 
-                /*if (restUrl.substring(-4) == `.css`) {
-                                    
-                } else {
-                  
-                }*/
-
-                //setting vars
-                var pageMain = await getFile(`Churras/`+ baseUrl + restUrl);
-
-                //page
-                response.writeHead(200, {'Content-Type': 'text/css'});
-
-                //render page and file
-                response.write(pageMain);
-                  
-                //send
-                response.end();
-            
-
-            break;
-            /*case`/static/img/images.jpg`:
-            
                   //setting vars
-                  var pageMain = await getFile(`Churras/static/img/images.jpg`);
+                  var pageMain = await getFile(`Churras/`+ baseUrl + restUrl);
 
                   //page
-                  response.writeHead(200, {'Content-Type': 'jpg'});
-
+                  response.writeHead(200, {'Content-Type': `text/`+restUrl.slice(dotcut+1) });
+                  /*restUrl.slice(dotcut)*/
                   //render page and file
                   response.write(pageMain);
-
                   //send
                   response.end();
                   break;
-              */
 
             case `/home`:
                   //setting vars
@@ -132,7 +98,7 @@ http.createServer(
                   response.writeHead(200, {'Content-Type': 'text/html'});
           
                   //render page and file
-                  response.write(pageHead + pageTitle + pageNull + `\n` + cutUrl + `\n` + baseUrl + `\n` + restUrl);
+                  response.write(pageHead + pageTitle + pageNull + ` CutUrl:` + cutUrl + ` base url:` + baseUrl + ` restURL:` + restUrl + ` URL:` + request.url);
 
                   //send
                   response.end();
