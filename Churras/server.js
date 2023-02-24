@@ -1,5 +1,6 @@
 //setting vars
 /*return fs.readFile(dir);*/
+const { dir } = require("console");
 var http = require(`http`);
 const port = 3729;
 const ip = `localhost`;
@@ -8,12 +9,12 @@ const local = `http://${ip}:${port}`
 
 //setting functions
   const getFile = (dir) => {
-    return fs.readFile(dir, (err, data)=>{
-      if (err) {
-        return err;
-      }
-      return data;
-    });
+    return fs.readFile(dir)
+  }
+  const acessFile = (dir) => {
+    return fs.access(dir, fs.constants.R_OK)
+    .then(() => true)
+    .catch(() => false);
   }
 
 //create server
@@ -59,14 +60,18 @@ http.createServer(
                   //tip of file
                   let dotcut = restUrl.indexOf(`.`);
 
-                  //setting vars
-                  var pageMain = await getFile(`Churras/`+ baseUrl + restUrl);
-
-                  //page
-                  response.writeHead(200, {'Content-Type': `text/`+restUrl.slice(dotcut+1) });
-                  /*restUrl.slice(dotcut)*/
-                  //render page and file
-                  response.write(pageMain);
+                  //"if" for check if exist and can be acess
+                  if(await acessFile(`Churras/`+ baseUrl + restUrl)){
+                    //setting vars
+                    var pageMain = await getFile(`Churras/`+ baseUrl + restUrl);
+                    //page
+                    response.writeHead(200, {'Content-Type': `text/`+restUrl.slice(dotcut+1) });
+                    //render page and file
+                    response.write(pageMain);
+                  }else{
+                    //render page and file
+                    response.write(`file not found!`);
+                  }
                   //send
                   response.end();
                   break;
