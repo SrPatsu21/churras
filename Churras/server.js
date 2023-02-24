@@ -74,7 +74,7 @@ http.createServer(
                   }
                   //send
                   response.end();
-                  break;
+            break;
 
             case `/home`:
                   //setting vars
@@ -91,9 +91,9 @@ http.createServer(
 
                   //send
                   response.end();
-                  break;
+            break;
               
-              default:
+            default:
                   //setting vars
                   var pageTitle = `
                   <title>"NOT FOUND"</title>
@@ -107,7 +107,7 @@ http.createServer(
 
                   //send
                   response.end();
-                  break;
+            break;
           }
   }
 ).listen(port, ip, ()=>{
