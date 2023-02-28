@@ -1,4 +1,4 @@
-/*static*/
+/*elements*/
 body{min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
 p{margin: 0px;}
 /*responsiveness*/
@@ -23,6 +23,11 @@ p{margin: 0px;}
         .col-w-11 {width: 91.66%;}
         .col-w-12 {width: 100%;}
     }
+/*vars*/
+:root{
+    --color1: #FFE800;
+    --color1w: #FFF15F;
+}
 /*flex*/
     /*flex-warp*/
     .flex{display: flex; flex-wrap: wrap;}
@@ -72,13 +77,29 @@ p{margin: 0px;}
 .fz3{font-size: 3rem;}
 .fz4{font-size: 4rem;}
 .txtc{text-align: center;}
+.tDNone{text-decoration: none;}
 /*text color*/
 .txtred{color: #FF0000;}
 /*padding*/
 .pa-1pc{padding: 1%;}
 .pa-2pc{padding: 2%;}
 /*background*/
-.bg-header{background-color: #00ff00;}
-.bg-nav{background-color: #44FF44;}
+.bg-header{background-color: var(--color1);}
+.bg-nav{background-color: var(--color1w);}
 /*logo*/
 .logo{width: 100%; height: auto;}
+/*link*/
+.navlink{color: #050505; text-decoration: none; font-weight: 600;}
+/*animations*/
+@keyframes CamingRight{
+    0% {position: relative; right: 100%;}
+    85% {position: relative; right: -1%;}
+    100% {position: relative; right: 0%;}
+}
+@keyframes CamingLeft{
+    0% {position: relative; left: 100%;}
+    85% {position: relative; left: -1%;}
+    100% {position: relative; left: 0%;}
+}
+.aniNavBarR{animation-name: CamingRight; animation-duration: 1.5s; animation-timing-function: cubic-bezier(100%,100%,70%,30%);}
+.aniNavBarL{animation-name: CamingLeft; animation-duration: 1.5s; animation-timing-function: cubic-bezier(100%,100%,70%,30%);}
