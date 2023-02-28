@@ -25,8 +25,10 @@ p{margin: 0px;}
     }
 /*vars*/
 :root{
-    --color1: #FFE800;
-    --color1w: #FFF15F;
+    --yellow: #FFE800;
+    --yellowL: #FFF15F;
+    --dark: #050505;
+    --gray: #555555;
 }
 /*flex*/
     /*flex-warp*/
@@ -84,21 +86,23 @@ p{margin: 0px;}
 .pa-1pc{padding: 1%;}
 .pa-2pc{padding: 2%;}
 /*background*/
-.bg-header{background-color: var(--color1);}
-.bg-nav{background-color: var(--color1w);}
+.bg-header{background-color: var(--yellow);}
+.bg-nav{background-color: var(--yellowL);}
 /*logo*/
 .logo{width: 100%; height: auto;}
 /*link*/
-.navlink{color: #050505; text-decoration: none; font-weight: 600;}
+.navlink{color: var(--dark); text-decoration: none; font-weight: 600;}
+.navlink:hover{text-decoration: underline; color: var(--gray);}
 /*animations*/
+/*
 @keyframes CamingRight{
     0% {position: relative; right: 100%;}
-    85% {position: relative; right: -1%;}
+    85% {position: relative; right: -2%;}
     100% {position: relative; right: 0%;}
 }
 @keyframes CamingLeft{
     0% {position: relative; left: 100%;}
-    85% {position: relative; left: -1%;}
+    85% {position: relative; left: -2%;}
     100% {position: relative; left: 0%;}
 }
 .aniNavBarR{animation-name: CamingRight; animation-duration: 1.5s; animation-timing-function: cubic-bezier(100%,100%,70%,30%);}
