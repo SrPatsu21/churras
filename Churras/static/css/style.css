@@ -80,6 +80,13 @@ p{margin: 0px;}
 .fz4{font-size: 4rem;}
 .txtc{text-align: center;}
 .tDNone{text-decoration: none;}
+/*position*/
+.positionRl{position: relative;}
+.positionFx{position: fixed;}
+.positionAb{position: absolute;}
+.positionSt{position: static;}
+.positionStc{position: sticky;}
+
 /*text color*/
 .txtred{color: #FF0000;}
 /*padding*/
@@ -94,7 +101,6 @@ p{margin: 0px;}
 .navlink{color: var(--dark); text-decoration: none; font-weight: 600;}
 .navlink:hover{text-decoration: underline; color: var(--gray);}
 /*animations*/
-/*
 @keyframes CamingRight{
     0% {position: relative; right: 100%;}
     85% {position: relative; right: -2%;}
