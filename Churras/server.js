@@ -1,21 +1,9 @@
-//setting vars
-/*return fs.readFile(dir);*/
-const { dir } = require("console");
+//setting and call vars
 var http = require(`http`);
+var File = require("./fileHandler");
 const port = 3729;
 const ip = `localhost`;
-var fs = require(`fs`).promises;
 const local = `http://${ip}:${port}`
-
-//setting functions
-  const getFile = (dir) => {
-    return fs.readFile(dir)
-  }
-  const acessFile = (dir) => {
-    return fs.access(dir, fs.constants.R_OK)
-    .then(() => true)
-    .catch(() => false);
-  }
 
 //create server
 http.createServer(
@@ -36,8 +24,8 @@ http.createServer(
               </style>
           `;
 
-        const pageHeader = await getFile(`Churras/static/pageHeader.html`);
-        const pageFooter = await getFile(`Churras/static/pageFooter.html`);
+        const pageHeader = await File.getFile(`Churras/static/pageHeader.html`);
+        const pageFooter = await File.getFile(`Churras/static/pageFooter.html`);
         const pageNull = await getFile(`Churras/static/pageNull.html`);
         const pageClose = `
           </body>
