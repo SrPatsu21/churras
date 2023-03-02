@@ -26,7 +26,7 @@ http.createServer(
 
         const pageHeader = await File.getFile(`Churras/static/pageHeader.html`);
         const pageFooter = await File.getFile(`Churras/static/pageFooter.html`);
-        const pageNull = await getFile(`Churras/static/pageNull.html`);
+        const pageNull = await File.getFile(`Churras/static/pageNull.html`);
         const pageClose = `
           </body>
           </html>
@@ -49,9 +49,9 @@ http.createServer(
                   let dotcut = restUrl.indexOf(`.`);
 
                   //"if" for check if exist and can be acess
-                  if(await acessFile(`Churras/`+ baseUrl + restUrl)){
+                  if(await File.acessFile(`Churras/`+ baseUrl + restUrl)){
                     //setting vars
-                    var pageMain = await getFile(`Churras/`+ baseUrl + restUrl);
+                    var pageMain = await File.getFile(`Churras/`+ baseUrl + restUrl);
                     //page
                     response.writeHead(200, {'Content-Type': `text/`+restUrl.slice(dotcut+1) });
                     //render page and file
@@ -69,7 +69,7 @@ http.createServer(
                   var pageTitle = `
                   <title>HOME</title>
                   `;
-                  var pageMain = await getFile(`Churras/static/home.html`);
+                  var pageMain = await File.getFile(`Churras/static/home.html`);
 
                   //page
                   response.writeHead(200, {'Content-Type': 'text/html'});
