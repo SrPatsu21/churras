@@ -19,6 +19,7 @@ http.createServer(
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <link rel="stylesheet" href="${local}/static/css/style.css">
+              <script src="${local}/"></script>
               <style>
                 body {min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
               </style>
@@ -26,7 +27,6 @@ http.createServer(
 
         const pageHeader = await File.getFile(`Churras/static/pageHeader.html`);
         const pageFooter = await File.getFile(`Churras/static/pageFooter.html`);
-        const pageNull = await File.getFile(`Churras/static/pageNull.html`);
         const pageClose = `
           </body>
           </html>
@@ -47,9 +47,11 @@ http.createServer(
             case`/static`:
                   //tip of file
                   let dotcut = restUrl.indexOf(`.`);
-
+                  const pageFileNFound = await File.getFile(`Churras/static/pageFileNFound.html`);
                   //"if" for check if exist and can be acess
-                  if(await File.acessFile(`Churras/`+ baseUrl + restUrl)){
+                  if(restUrl == null || restUrl == ""){
+                    response.write(pageHead + pageTitle + pageFileNFound);
+                  }else if(await File.acessFile(`Churras/`+ baseUrl + restUrl)){
                     //setting vars
                     var pageMain = await File.getFile(`Churras/`+ baseUrl + restUrl);
                     //page
@@ -91,7 +93,9 @@ http.createServer(
                   response.writeHead(200, {'Content-Type': 'text/html'});
           
                   //render page and file
-                  response.write(pageHead + pageTitle + pageNull + ` CutUrl:` + cutUrl + ` base url:` + baseUrl + ` restURL:` + restUrl + ` URL:` + request.url);
+                  const pageNull = await File.getFile(`Churras/static/pageNull.html`);
+
+                  response.write(pageHead + pageTitle + pageNull);
 
                   //send
                   response.end();
