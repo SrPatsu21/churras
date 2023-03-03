@@ -30,6 +30,10 @@ p{margin: 0px;}
     --dark: #050505;
     --gray: #555555;
 }
+/*diplay*/
+.displayBk{display: block;}
+.displayBt{display: contents;}
+.displayIl{display: inline;}
 /*flex*/
     /*flex-warp*/
     .flex{display: flex!important; flex-wrap: wrap!important;}
@@ -72,6 +76,7 @@ p{margin: 0px;}
 .w100{width: 100vw;}
 /*heigth*/
 .h100{height: 100vh;}
+.hAuto{height: auto;}
 /*text*/
 .uppc{text-transform: uppercase;}
 .fz1{font-size: 1rem;}
@@ -86,7 +91,6 @@ p{margin: 0px;}
 .positionAb{position: absolute;}
 .positionSt{position: static;}
 .positionStc{position: sticky;}
-
 /*text color*/
 .txtred{color: #FF0000;}
 /*padding*/
@@ -95,8 +99,6 @@ p{margin: 0px;}
 /*background*/
 .bg-header{background-color: var(--yellow);}
 .bg-nav{background-color: var(--yellowL);}
-/*logo*/
-.logo{width: 100%; height: auto;}
 /*link*/
 .navlink{color: var(--dark); text-decoration: none; font-weight: 600;}
 .navlink:hover{text-decoration: underline; color: var(--gray);}
