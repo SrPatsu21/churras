@@ -1,15 +1,19 @@
 <header class="bg-header">
     <div class="col-w-12 flex flex-c-between flex-y-center flex-w">
-        <div class="col-w-6 flex-x-between">
+        <div class="col-w-6 flex flex-x-between">
             <img class="col-w-1" src="http://localhost:3729/static/img/images.jpg" alt="logo" class="logo">
         </div>
-        <div class="col-w-6 felx flex-x-end">
-            <svg id="personSvg" class="col-w-1">   
-                
+        <div class="col-w-6 flex flex-x-end flex-y-center">
+            <svg id="personSvg" class="flex">   
+                <script>
+                    $("#personSvg").load("http://localhost:3729/static/svg/person.svg");
+                </script>
             </svg>
-            <img src="" alt="">
-        <div>
-
+            <svg id="carSvg" class="flex">   
+                <script>
+                    $("#carSvg").load("http://localhost:3729/static/svg/person.svg");
+                </script>
+            </svg>
         </div>
     </div>
     <nav class="col-w-12 flex flex-x-between flex-y-center bg-nav">

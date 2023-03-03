@@ -32,8 +32,8 @@ p{margin: 0px;}
 }
 /*flex*/
     /*flex-warp*/
-    .flex{display: flex; flex-wrap: wrap;}
-    .flex-nw{display: flex; flex-wrap: nowrap;}
+    .flex{display: flex!important; flex-wrap: wrap!important;}
+    .flex-nw{display: flex!important; flex-wrap: nowrap!important;}
     /*flex-direction*/
     .flex-row{flex-direction: row;}
     .flex-row-rev{flex-direction: row-reverse;}

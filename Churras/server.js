@@ -10,7 +10,7 @@ http.createServer(
   async function page(request, response){
       
         //calling parts
-        let pageHead =
+        const pageHead =
           `
           <!DOCTYPE html>
           <html lang="en">
@@ -19,10 +19,7 @@ http.createServer(
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <link rel="stylesheet" href="${local}/static/css/style.css">
-              <script src="${local}/"></script>
-              <style>
-                body {min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
-              </style>
+              <script src="${local}/static/jquery/jquery-3.6.3.js"></script>
           `;
 
         const pageHeader = await File.getFile(`Churras/static/pageHeader.html`);
@@ -53,7 +50,7 @@ http.createServer(
                     response.write(pageHead + pageTitle + pageFileNFound);
                   }else if(await File.acessFile(`Churras/`+ baseUrl + restUrl)){
                     //setting vars
-                    var pageMain = await File.getFile(`Churras/`+ baseUrl + restUrl);
+                    pageMain = await File.getFile(`Churras/`+ baseUrl + restUrl);
                     //page
                     response.writeHead(200, {'Content-Type': `text/`+restUrl.slice(dotcut+1) });
                     //render page and file
@@ -68,10 +65,10 @@ http.createServer(
 
             case `/home`:
                   //setting vars
-                  var pageTitle = `
+                  pageTitle = `
                   <title>HOME</title>
                   `;
-                  var pageMain = await File.getFile(`Churras/static/home.html`);
+                  pageMain = await File.getFile(`Churras/static/home.html`);
 
                   //page
                   response.writeHead(200, {'Content-Type': 'text/html'});
@@ -85,7 +82,7 @@ http.createServer(
               
             default:
                   //setting vars
-                  var pageTitle = `
+                  pageTitle = `
                   <title>"NOT FOUND"</title>
                   `;
 
