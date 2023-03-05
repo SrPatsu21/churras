@@ -23,12 +23,27 @@ p{margin: 0px;}
         .col-w-11 {width: 91.66%;}
         .col-w-12 {width: 100%;}
     }
+    @media only screen and (min-width: 768px) {
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-w-6 {width: 50%;}
+        .col-w-7 {width: 58.33%;}
+        .col-w-8 {width: 66.66%;}
+        .col-w-9 {width: 75%;}
+        .col-w-10 {width: 83.33%;}
+        .col-w-11 {width: 91.66%;}
+        .col-w-12 {width: 100%;}
+    }
 /*vars*/
 :root{
     --yellow: #FFE800;
     --yellowL: #FFF15F;
     --dark: #050505;
     --gray: #555555;
+    --lgGray: #999999;
 }
 /*diplay*/
 .displayBk{display: block;}
@@ -100,8 +115,8 @@ p{margin: 0px;}
 .bg-header{background-color: var(--yellow);}
 .bg-nav{background-color: var(--yellowL);}
 /*link*/
-.navlink{color: var(--dark); text-decoration: none; font-weight: 600;}
-.navlink:hover{text-decoration: underline; color: var(--gray);}
+.navlink{color: var(--dark); text-decoration: none; font-weight: 600;}:hover{text-decoration: underline; color: var(--gray);}
+.iconLink{color: var(--gray);}:hover{color: var(--lgGray);}
 /*animations*/
 @keyframes CamingRight{
     0% {position: relative; right: 100%;}
