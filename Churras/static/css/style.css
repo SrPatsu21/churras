@@ -43,6 +43,7 @@ p{margin: 0px;}
     --dark: #050505;
     --gray: #555555;
     --lgGray: #999999;
+    --hdwhite: #e0e0e0;
 }
 /*diplay*/
 .displayBk{display: block;}
@@ -110,7 +111,11 @@ p{margin: 0px;}
 /*padding*/
 .pa-1pc{padding: 1%;}
 .pa-2pc{padding: 2%;}
+.prl-1pc{  padding-top: 0%; padding-right: 1%; padding-bottom: 0%; padding-left: 1%;}
+/*margin*/
+.mt-2vh{margin-top: 2vh;}
 /*background*/
+.bg-body{background-color: var(--hdwhite);}
 .bg-header{background-color: var(--yellow);}
 .bg-nav{background-color: var(--yellowL);}
 /*link*/
