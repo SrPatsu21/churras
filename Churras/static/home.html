@@ -8,7 +8,36 @@
     <!--card-->
     <div class="col-w-8 flex">
         <div class="col-12 prl-1pc flex-c-between">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            <!--card div -->
+            <div id="cardBlock" class="col-w-2 flex">
+
+                <script>
+                    let cardBlock = document.getElementById("cardBlock");
+                    let cardTimes = 8;
+                    var cardReturn;
+                    for ( cardTimes = 0; cardTimes > 0; i--) {
+                        
+                        cardReturn += (`
+                            <div class="col-12 flex flex-x-center pa-1pc ma-1pc bord-card bg-card">
+                            <img src="http://localhost:3729/static/img/logo.jpg" alt="">
+                            <p class="fz1 txtc col-12">product name</p>
+                            <p class="fz05 txtc col-12">price</p>
+                            </div>
+
+                        `);
+                    cardBlock.innerHTML = cardReturn;
+                    }
+                </script>
+
+                <div class="col-12 flex flex-x-center pa-1pc ma-1pc bord-card bg-card">
+
+                    <img src="http://localhost:3729/static/img/logo.jpg" alt="">
+                    <p class="fz1 txtc col-12">product name</p>
+                    <p class="fz05 txtc col-12">price</p>
+
+                </div>
+                
+            </div>
         </div>
     </div>
     <!--add-->

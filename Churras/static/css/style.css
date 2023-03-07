@@ -94,6 +94,7 @@ p{margin: 0px;}
 .hAuto{height: auto;}
 /*text*/
 .uppc{text-transform: uppercase;}
+.fz05{font-size: 0.5rem;}
 .fz1{font-size: 1rem;}
 .fz2{font-size: 2rem;}
 .fz3{font-size: 3rem;}
@@ -114,10 +115,14 @@ p{margin: 0px;}
 .prl-1pc{  padding-top: 0%; padding-right: 1%; padding-bottom: 0%; padding-left: 1%;}
 /*margin*/
 .mt-2vh{margin-top: 2vh;}
+.ma-1pc{margin: 1%;}
+/*border*/
+.bord-card{border-color: var(--lgGray); border-radius: 3px; border-width: 2px; border-style: solid;}
 /*background*/
 .bg-body{background-color: var(--hdwhite);}
 .bg-header{background-color: var(--yellow);}
 .bg-nav{background-color: var(--yellowL);}
+.bg-card{background-color: var(--hdwhite);}
 /*link*/
 .navlink{color: var(--dark); text-decoration: none; font-weight: 600;}
 .navlink:hover{text-decoration: underline; color: var(--gray);}
