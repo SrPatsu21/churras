@@ -1,4 +1,5 @@
 /*elements*/
+html{overflow-x: hidden;}
 body{min-width: 100vh;min-height: 100vh; margin: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif;}
 p{margin: 0px;}
 /*responsiveness*/
@@ -39,11 +40,19 @@ p{margin: 0px;}
 /*vars*/
 :root{
     --yellow: #FFE800;
-    --yellowL: #FFF15F;
+    --lgYellow: #FFF15F;
     --dark: #050505;
     --gray: #555555;
     --lgGray: #999999;
-    --hdwhite: #e0e0e0;
+    --hdWhite: #e0e0e0;
+    --hdrWhite: #e9e9e9;
+    --white: #FFFFFF;
+    --lgAqua: #50D8D8;
+    --aqua: #00CDCD;
+    --hdAqua: #009F9F;
+    --red: #FF0000;
+    --hdRed: #C80000;
+
 }
 /*diplay*/
 .displayBk{display: block;}
@@ -88,8 +97,8 @@ p{margin: 0px;}
     .flex-si-baseline {align-self: baseline;}
     .flex-si-stretch {align-self: stretch;}
 /*width*/
-.w100{width: 100vw;}
 .wMax40vw{max-width: 40vw;}
+.wMax30vw{max-width: 30vw;}
 /*heigth*/
 .h100{height: 100vh;}
 .hAuto{height: auto;}
@@ -110,33 +119,53 @@ p{margin: 0px;}
 .positionSt{position: static;}
 .positionStc{position: sticky;}
 /*text color*/
-.txtred{color: #FF0000;}
+.txtRed{color: var(--red);}
+.txtHdRed{color: var(--hdRed);}
 /*padding*/
 .pa-1pc{padding: 1%;}
 .pa-2pc{padding: 2%;}
 .prl-1pc{  padding-top: 0%; padding-right: 1%; padding-bottom: 0%; padding-left: 1%;}
+.pa-1pc-b{padding: 1%; padding-bottom: 0%;}
+
 /*margin*/
 .ma-0pc{margin: 0% !important;}
 .mt-2vh{margin-top: 2vh;}
 .ma-1pc{margin: 1%;}
 .ma-2pc{margin: 2%;}
+.mb-1pc{margin-bottom: 1%;}
+.mb-2pc{margin-bottom: 2%;}
 /*border*/
-.bord-card{border-color: var(--lgGray); border-radius: 3px; border-width: 2px; border-style: solid;}
+.bord-card{border-style: solid; border-color: var(--lgGray); border-radius: 5px; border-width: 2px;}
+.bord-line{border-style: solid; border-color: var(--lgGray); border-width: 1px; margin-top: 2px; margin-bottom: 2px;}
 /*background*/
-.bg-body{background-color: var(--hdwhite);}
+.bg-body{background-color: var(--hdrWhite);}
 .bg-header{background-color: var(--yellow);}
-.bg-nav{background-color: var(--yellowL);}
-.bg-card{background-color: var(--hdwhite);}
+.bg-nav{background-color: var(--lgYellow);}
+.bg-card{background-color: var(--white);}
+/*image*/
+.img-card{image-rendering: optimizeQuality; width: 100%; height: auto; object-fit: contain; border-radius: 5px;}
 /*link*/
-.navlink{color: var(--dark); text-decoration: none; font-weight: 600;}
-.navlink:hover{text-decoration: underline; color: var(--gray);}
+.navlink{color: var(--dark); text-decoration: underline; font-weight: 600;}
+.navlink:hover{color: var(--gray);}
 .iconLink{color: var(--gray);}
 .iconLink:hover{color: var(--lgGray);}
+/*buttons*/
+.bt-about{background-color: transparent;color: var(--hdAqua); border-style: solid; border-radius: 5px; border-color: var(--hdAqua);border-width: 2px; padding: 3%;}
+.bt-about:hover{background-color: var(--aqua); color: var(--dark); border-color: var(--hdAqua);}
+.bt-add-cart{background-color: transparent;color: var(--hdRed); border-style: solid; border-radius: 5px; border-color: var(--hdRed);border-width: 2px; padding: 3%;}
+.bt-add-cart:hover{background-color: var(--red); color: var(--dark); border-color: var(--dark);}
+/*overflow*/
+.txt-overF-PN{text-overflow: ellipsis; height: 2.2rem; overflow: hidden;}
 /*dropdown*/
 .dropdown {text-align: center;}
-.dropdown-cont {display: none; position: absolute; background-color: var(--hdwhite); padding: 0.5%; z-index: 1; border-color: var(--lgGray); border-radius: 3px; border-width: 4px; border-style: double;}
+@media only screen and (max-width: 768px) {
+    .dropdown-cont {display: none; position: absolute; background-color: var(--hdWhite); padding: 0.5%; z-index: 1; border-color: var(--lgGray); border-radius: 3px; border-width: 4px; border-style: double; max-width: 80vw; min-width: 30vw;}
+}
+@media only screen and (min-width: 768px) {
+    .dropdown-cont {display: none; position: absolute; background-color: var(--hdWhite); padding: 0.5%; z-index: 1; border-color: var(--lgGray); border-radius: 3px; border-width: 4px; border-style: double; max-width: 30vw;}
+}
+.dropdown-cont:hover{border-color: var(--hdAqua); text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: var(--aqua);}
 .dropdown:hover .dropdown-cont {display: block;}
-
 /*animations*/
 @keyframes CamingRight{
     0% {position: relative; right: 100%;}
