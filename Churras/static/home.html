@@ -14,71 +14,42 @@
                     let cardBlock = document.getElementById("cardBlock");
                     let cardTimes = 3;
                     var cardReturn = "";
-                    for (cardTimes *= 6; cardTimes > 0; cardTimes--) {
+                    for (cardTimes *= 4; cardTimes > 0; cardTimes--) {
                         
                         cardReturn += `
-                        <div class="col-w-3 flex ma-0pc">
-                            <div class="col-12 flex flex-x-center ma-2pc bord-card bg-card">
-                                <div class="col-12 pa-1pc-b">
-                                    <img src="http://localhost:3729/static/img/logo.jpg" class="img-card" alt="">
-                                </div>
-                                <div class="col-12 bord-line"></div>
-                                <p class="fz1 txtc col-12 pa-1pc txt-overF-PN">CPU HOME INTEL CORE I7 3770/B75M 3.0/NVME NV2 500GB KINGSTON/500W REAL BIVOLT/16GB DDR3 1600MHZ/VX GAMING AUSTRALIAN RGB/WIFI 2.4 USB- LÍDER 0854CPU HOME INTEL CORE I7 3770/B75M 3.0/NVME NV2 500GB KINGSTON/500W REAL BIVOLT/16GB DDR3 1600MHZ/VX GAMING AUSTRALIAN RGB/WIFI 2.4 USB- LÍDER 0854 asdasdf sddasdasfasfas sdaas1</p>
-                                <p class="fz075 txtc col-12 pa-1pc txtRed">R$: price</p>
-                                <div class="col-12 bord-line"></div>
+                                    <div class="col-w-3 flex ma-0pc">
+                                        <div class="col-12 flex flex-x-center ma-2pc bord-card bg-card">
+                                            <div class="col-12 pa-1pc-b">
+                                                <img src="http://localhost:3729/static/img/logo.jpg" class="img-card" alt="">
+                                            </div>
+                                            <div class="col-12 displayBk">
+                                                <a class="dropdown fz075 txtc col-12 pa-1pc txt-overF-PN cardTLink displayBk" href="#">16GBDDR31600MHZ /VXGAMING</a>
+                                                <div class="dropdown-cont fz1">
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum libero quaerat ratione id, vel iusto. Laborum est molestias nihil.</p>
+                                                </div>
+                                            </div>
+                                            <p class="fz075 txtc col-12 pa-1pc txtRed">R$: price</p>
+                                            <div class="col-12 bord-line"></div>
 
-                                <!--buttons-->
-                                <div class="col-12 flex flex-x-center ma-2pc">
-                                
-                                    <div class="col-w-9 mb-2pc">
-                                        <button class="col-w-12 uppc bt-add-cart txtc">add to cart</button>
-                                    </div>
-        
-                                    <div class="dropdown col-w-9">
-                                        <button class="col-12 uppc bt-about">about</button>
-                                        <div class="dropdown-cont">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum libero quaerat ratione id, vel iusto. Laborum est molestias nihil.</p>
+                                            <!--buttons-->
+                                            <div class="col-12 flex flex-x-around ma-2pc flex-y-stretch ">
+                                            
+                                                <div class="col-w-5">
+                                                    <button class="col-12 uppc bt-add-cart txtc fz075 h100pc">add to cart</button>
+                                                </div>
+
+                                                <div class="col-w-5 ">
+                                                    <button class="col-12 uppc bt-about fz075 h100pc">about</button>
+                                                </div>
+
+                                            </div>
+
                                         </div>
                                     </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        `;
-                    }
+                                `;
+                        }
                     cardBlock.innerHTML = cardReturn;
                 </script>
-
-                    <div class="col-w-3 flex ma-0pc">
-                        <div class="col-12 flex flex-x-center ma-2pc bord-card bg-card">
-                            <div class="col-12 pa-1pc-b">
-                                <img src="http://localhost:3729/static/img/logo.jpg" class="img-card" alt="">
-                            </div>
-                            <div class="col-12 bord-line"></div>
-                            <p class="fz1 txtc col-12 pa-1pc txt-overF-PN">CPU HOME INTEL CORE I7 3770/B75M 3.0/NVME NV2 500GB KINGSTON/500W REAL BIVOLT/16GB DDR3 1600MHZ/VX GAMING AUSTRALIAN RGB/WIFI 2.4 USB- LÍDER 0854CPU HOME INTEL CORE I7 3770/B75M 3.0/NVME NV2 500GB KINGSTON/500W REAL BIVOLT/16GB DDR3 1600MHZ/VX GAMING AUSTRALIAN RGB/WIFI 2.4 USB- LÍDER 0854 asdasdf sddasdasfasfas sdaas1</p>
-                            <p class="fz075 txtc col-12 pa-1pc txtRed">R$: price</p>
-                            <div class="col-12 bord-line"></div>
-
-                            <!--buttons-->
-                            <div class="col-12 flex flex-x-center ma-2pc">
-                            
-                                <div class="col-w-9 mb-2pc">
-                                    <button class="col-12 uppc bt-add-cart txtc">add to cart</button>
-                                </div>
-    
-                                <div class="dropdown col-w-9">
-                                    <button class="col-12 uppc bt-about">about</button>
-                                    <div class="dropdown-cont">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum libero quaerat ratione id, vel iusto. Laborum est molestias nihil.</p>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                
             </div>
         </div>
     </div>
