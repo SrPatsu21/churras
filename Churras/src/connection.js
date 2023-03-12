@@ -1,27 +1,13 @@
-var mysql = require(`mysql`);
+var mysql = require(`./MySql/node_modules/mysql/index.js`);
 
 var con = mysql.createConnection({
   host: `localhost`,
   user: `root`,
   password: `coringa`,
-  database: `Main`
+  insecureAuth : true
 });
 
-/*con.connect(function(err) {
-  try{
-    con.query("SELECT * FROM databank.teste;", function (err, result, fields) {
-      console.log(result);
-    })
-  }
-  catch{
-    throw err;
-  };
-});*/
 con.connect(function(err) {
-  if (err){throw err;}
-  con.query("SELECT * FROM teste;", function (err, result, fields) {
-    if (err){throw err;}
-    console.log(result);
-    console.log(fields);
-  });
+  if (err) throw err;
+  console.log("Connected!");
 });
