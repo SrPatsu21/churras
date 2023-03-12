@@ -143,7 +143,12 @@ p{margin: 0px;}
 .bg-nav{background-color: var(--lgYellow); box-shadow: 4px 0px 6px var(--lgYellow);}
 .bg-card{background-color: var(--white);}
 /*image*/
-.img-card{width: 100%; object-fit: cover; border-radius: 5px; height: 30vh; }
+@media only screen and (max-width: 768px){
+    .img-card{width: 100%; object-fit: cover; border-radius: 5px; height: 75vh;}
+}
+@media only screen and (min-width: 768px) {
+    .img-card{width: 100%; object-fit: cover; border-radius: 5px; height: 30vh; }
+}
 /*link*/
 .navlink{color: var(--dark); text-decoration: underline; font-weight: 600;}
 .navlink:hover{color: var(--gray);}
