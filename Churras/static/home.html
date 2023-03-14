@@ -2,16 +2,17 @@
         <!--add-->
     <div class="col-w-2 flex">
         <div class="col-12 prl-1pc">
+            <!--
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6344227776757316"crossorigin="anonymous"></script>
+            -->
         </div>
     </div>
     <!--card-->
     <div class="col-w-8 flex">
         <div id="cardBlock" class="col-12 prl-1pc flex flex-x-start flex-y-baseline">
-
+            
             <!--card div -->
                 <script>
-                    import {getDB} from "http://localhost:3729/dataBank"
                     let cardBlock = document.getElementById("cardBlock");
                     let cardTimes = 3;
                     var cardReturn = "";
@@ -57,7 +58,9 @@
     <!--add-->
     <div class="col-w-2 flex">
         <div class="col-12 prl-1pc">
+            <!--
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6344227776757316" crossorigin="anonymous"></script>
+            -->
             <!-- test add display -->
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6344227776757316" data-ad-slot="9748913182" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>
@@ -66,3 +69,7 @@
         </div>
     </div>
 </main>
+<script src="http://localhost:3729/dataBank" type="module">
+    import {getDB} from "http://localhost:3729/dataBank";
+    getDB()
+</script>
