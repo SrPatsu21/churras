@@ -81,6 +81,19 @@ http.createServer(
                   //send
                   response.end();
             break;
+
+            case `/dataBank`:
+
+              //seting vars
+              pageMain = await File.getFile(`Churras/src/connection.js`);
+              //page
+              response.writeHead(200, {'Content-Type': 'js'});
+              //render page and file
+              response.write(pageMain);
+
+              //send
+              response.end();
+            break;
               
             default:
                   //setting vars
