@@ -11,3 +11,12 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
+
+exports.getDB = (sql) =>{
+  con.connect(function() {
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("SQL done");
+    });
+  });
+}
