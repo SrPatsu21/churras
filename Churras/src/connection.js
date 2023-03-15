@@ -12,7 +12,7 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-exports.getDB = (sql) =>{
+const getDB = (sql) =>{
   con.connect(function() {
     con.query(sql, function (err, result) {
       if (err) throw err;
@@ -20,3 +20,4 @@ exports.getDB = (sql) =>{
     });
   });
 }
+export default getDB;

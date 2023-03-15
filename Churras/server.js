@@ -23,13 +23,14 @@ http.createServer(
           </head>
           <body class="bg-body">
           `;
-
         const pageHeader = await File.getFile(`Churras/static/pageHeader.html`);
         const pageFooter = await File.getFile(`Churras/static/pageFooter.html`);
         const pageClose = `
           </body>
           </html>
           `;
+        var pageMain = null;
+        var pageTitle = null;
 
         //defining url
 
