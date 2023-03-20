@@ -68,7 +68,6 @@ p{margin: 0px;}
     .flex-col{flex-direction: column;}
     .flex-col-rev{flex-direction: column-reverse;}
 
-
     /*justify-content*/
     .flex-x-center{justify-content: center;}
     .flex-x-start{justify-content: start;}
@@ -97,12 +96,16 @@ p{margin: 0px;}
     .flex-si-baseline {align-self: baseline;}
     .flex-si-stretch {align-self: stretch;}
 /*width*/
+.w100vw{width: 100vw;}
 .wMax40vw{max-width: 40vw;}
 .wMax30vw{max-width: 30vw;}
 /*heigth*/
+.h100vh{height: 100vh;}
 .h100pc{height: 100%;}
 .hAuto{height: auto;}
+.hM70vh{min-height: 70vh;}
 /*text*/
+.txtCR{color: var(--red);}
 .uppc{text-transform: uppercase;}
 .fz05{font-size: 0.5rem;}
 .fz075{font-size: 0.75rem;}
@@ -125,6 +128,7 @@ p{margin: 0px;}
 /*padding*/
 .pa-1pc{padding: 1%;}
 .pa-2pc{padding: 2%;}
+.pa-5pc{padding: 5%;}
 .prl-1pc{  padding-top: 0%; padding-right: 1%; padding-bottom: 0%; padding-left: 1%;}
 .pa-1pc-b{padding: 1%; padding-bottom: 0%;}
 /*margin*/
@@ -134,7 +138,9 @@ p{margin: 0px;}
 .ma-2pc{margin: 2%;}
 .mb-1pc{margin-bottom: 1%;}
 .mb-2pc{margin-bottom: 2%;}
+.mt-2pc{margin-top: 2%;}
 /*border*/
+.bord-form{border-style: double; border-color: var(--hdAqua);border-radius: 5px; border-width: 3px;}
 .bord-card{border-style: solid; border-color: var(--hdrWhite); border-radius: 5px; border-width: 2px;}
 .bord-line{border-style: solid; border-color: var(--lgGray); border-width: 1px; margin-top: 2px; margin-bottom: 2px;}
 /*background*/
@@ -159,7 +165,6 @@ p{margin: 0px;}
 .cardTLink:hover{color: var(--hdAqua); text-decoration: none;}
 .footerLink{color: var(--gray); text-decoration: none}
 .footerLink:hover{color: var(--lgGray);}
-
 
 /*buttons*/
 .bt-about{background-color: transparent;color: var(--hdAqua); border-style: solid; border-radius: 5px; border-color: var(--hdAqua);border-width: 2px; padding: 3%;}

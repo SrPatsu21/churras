@@ -1,4 +1,4 @@
-var mysql = require(`./MySql/node_modules/mysql/index.js`);
+const mysql = require(`./MySql/node_modules/mysql/index.js`);
 
 var con = mysql.createConnection({
   host: `localhost`,
@@ -8,16 +8,21 @@ var con = mysql.createConnection({
 });
 
 con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
+  if (err){
+    throw err
+  } else {
+    console.log("Database Connected!");
+  }
 });
 
 const getDB = (sql) =>{
   con.connect(function() {
     con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("SQL done");
+      if (err){
+        throw err;
+      }
     });
   });
 }
-export default getDB;
+
+module.exports = getDB;

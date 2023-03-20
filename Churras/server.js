@@ -1,5 +1,6 @@
 //setting and call vars
-var http = require(`http`);
+const http = require(`http`);
+const getDB = require(`./src/connection.js`);
 var File = require("./fileHandler");
 const port = 3729;
 const ip = `localhost`;
@@ -83,6 +84,23 @@ http.createServer(
                   response.end();
             break;
 
+            case `/login`:
+                  //setting vars
+                  pageTitle = `
+                  <title>Login</title>
+                  `;
+                  pageMain = await File.getFile(`Churras/static/login.html`);
+
+                  //page
+                  response.writeHead(200, {'Content-Type': 'text/html'});
+
+                  //render page and file
+                  response.write(pageHead + pageTitle + pageHeader + pageMain + pageFooter + pageClose);
+
+                  //send
+                  response.end();
+            break;
+
             case `/dataBank`:
 
               //seting vars
@@ -117,5 +135,5 @@ http.createServer(
   }
 ).listen(port, ip, ()=>{
   //print out the HREF
-  console.log(`Server running...\n${local}/home`)
+  console.log(`Server running on: ${local}/home`)
 });
