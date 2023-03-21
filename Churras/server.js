@@ -1,7 +1,7 @@
 //setting and call vars
 const http = require(`http`);
 const getDB = require(`./src/connection.js`);
-var File = require("./fileHandler");
+const File = require(`./fileHandler`);
 const port = 3729;
 const ip = `localhost`;
 const local = `http://${ip}:${port}`
@@ -84,6 +84,24 @@ http.createServer(
                   response.end();
             break;
 
+            case `/dataBank`:
+              //setting vars
+              pageTitle = `
+              <title>dataBank</title>
+              `;
+              
+              pageMain = getDB.getCards();
+
+              //page
+              response.writeHead(200, {'Content-Type': 'text/html'});
+
+              //render page and file
+              response.write(pageHead + pageTitle + pageHeader + pageMain + pageFooter + pageClose);
+
+              //send
+              response.end();
+            break;
+
             case `/login`:
                   //setting vars
                   pageTitle = `
@@ -101,19 +119,6 @@ http.createServer(
                   response.end();
             break;
 
-            case `/dataBank`:
-
-              //seting vars
-              pageMain = await File.getFile(`Churras/src/connection.js`);
-              //page
-              response.writeHead(200, {'Content-Type': 'js'});
-              //render page and file
-              response.write(pageMain);
-
-              //send
-              response.end();
-            break;
-              
             default:
                   //setting vars
                   pageTitle = `
