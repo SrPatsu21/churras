@@ -89,9 +89,9 @@ http.createServer(
               pageTitle = `
               <title>dataBank</title>
               `;
-              
-              pageMain = getDB.getCards();
 
+              pageMain = getDB.getCards();
+              console.log(pageMain)
               //page
               response.writeHead(200, {'Content-Type': 'text/html'});
 

@@ -8,6 +8,7 @@ var con = mysql.createConnection({
   database: `churras`,
 });
 
+//depois de pronto pode apagar
 con.connect(function(err) {
   if (err){
     throw err;
@@ -16,16 +17,35 @@ con.connect(function(err) {
   }
 });
 
-var getDB = (sql) =>{
-  con.connect(function() {
-    con.query(sql, function (err, result) {
-      if (err) throw err;
-      return result
-    });
+/*const getDB = (sql) =>{
+   con.connect(function() {
+     con.query(sql, function (err, result) {
+        if (err) throw err;
+        return result
+      });
+  });
+}*/
+function getDB(sql){
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    return result;
   });
 }
 // o valor vai como indefinido
-exports.getCards = function (){
+/*exports.getCards = function (){
+  var x = [];
+  var x = getDB(`SELECT * FROM churras.produtos_test;`);
   console.log(getDB(`SELECT * FROM churras.produtos_test;`));
-  return getDB(`SELECT * FROM churras.produtos_test;`);
+  console.log(x);
+  return x;
+}*/
+//array n retorna
+exports.getCards = function (){
+  con.query(`SELECT * FROM churras.produtos_test;`, (err, result) => {
+    if (err) throw err;
+    console.log(result[1])
+    var x = result
+    console.log(x)
+    return x;
+  });
 }
