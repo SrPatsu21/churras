@@ -1,3 +1,4 @@
+const { resolve } = require("path");
 const mysql = require(`./MySql/node_modules/mysql/index.js`);
 
 var con = mysql.createConnection({
@@ -40,12 +41,12 @@ function getDB(sql){
   return x;
 }*/
 //array n retorna
-exports.getCards = function (){
-  con.query(`SELECT * FROM churras.produtos_test;`, (err, result) => {
-    if (err) throw err;
-    console.log(result[1])
-    var x = result
-    console.log(x)
-    return x;
+exports.getCards = () => {
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT * FROM churras.produtos_test;`, (err, result) => {
+      if (err) throw err;
+      console.log(JSON.parse(JSON.stringify(result)))
+      resolve(JSON.parse(JSON.stringify(result)));
+  })
   });
 }

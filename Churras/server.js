@@ -90,13 +90,13 @@ http.createServer(
               <title>dataBank</title>
               `;
 
-              pageMain = getDB.getCards();
-              console.log(pageMain)
+              var ar = [ await getDB.getCards()];
+              console.log(ar);
               //page
               response.writeHead(200, {'Content-Type': 'text/html'});
 
               //render page and file
-              response.write(pageHead + pageTitle + pageHeader + pageMain + pageFooter + pageClose);
+              response.write(pageHead + pageTitle + pageHeader + ar + pageFooter + pageClose);
 
               //send
               response.end();
