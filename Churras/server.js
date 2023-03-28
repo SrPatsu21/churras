@@ -93,7 +93,6 @@ http.createServer(
               `;
               
               var ar = await getDB.getCards();
-              console.log(ar);
 
               //page
               response.writeHead(200, {'Content-Type': 'text/html'});
