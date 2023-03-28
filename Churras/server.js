@@ -41,6 +41,7 @@ http.createServer(
           }
           var baseUrl = request.url.substring(-1,cutUrl);
           var restUrl = request.url.slice(cutUrl);
+          /*console.log(baseUrl)*/
 
         //criating pages 
           switch (baseUrl) {
@@ -77,6 +78,7 @@ http.createServer(
                   //page
                   response.writeHead(200, {'Content-Type': 'text/html'});
 
+
                   //render page and file
                   response.write(pageHead + pageTitle + pageHeader + pageMain + pageFooter + pageClose);
 
@@ -87,11 +89,12 @@ http.createServer(
             case `/dataBank`:
               //setting vars
               pageTitle = `
-              <title>dataBank</title>
+              <title>dataBank</title> 
               `;
-
-              var ar = [ await getDB.getCards()];
+              
+              var ar = await getDB.getCards();
               console.log(ar);
+
               //page
               response.writeHead(200, {'Content-Type': 'text/html'});
 

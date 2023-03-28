@@ -40,13 +40,14 @@ function getDB(sql){
   console.log(x);
   return x;
 }*/
-//array n retorna
-exports.getCards = () => {
+//array n retorna pq ela sai como json
+var getCards = () => {
   return new Promise((resolve, reject) => {
     con.query(`SELECT * FROM churras.produtos_test;`, (err, result) => {
       if (err) throw err;
-      console.log(JSON.parse(JSON.stringify(result)))
-      resolve(JSON.parse(JSON.stringify(result)));
-  })
+      return resolve(Object.values(JSON.parse(JSON.stringify(result))));
+    })
   });
 }
+
+module.exports = {getCards}
