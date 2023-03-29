@@ -45,12 +45,7 @@ var getCards = () => {
   return new Promise((resolve, reject) => {
     con.query(`SELECT * FROM churras.produtos_test;`, (err, result) => {
       if (err) throw err;
-      var x = Object.values(JSON.parse(JSON.stringify(result)));
-      console.log(result)
-      for(const y in x) {
-        console.log(x[y].idprodutos_test)
-      }
-      return resolve(x);
+      return resolve(JSON.parse(JSON.stringify(result)));
     })
   });
 }

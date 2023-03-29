@@ -93,12 +93,16 @@ http.createServer(
               `;
               
               var ar = await getDB.getCards();
+              var x = "";
+              for(const y in ar){
+                x += " " + ar[y].idprodutos_test;
+              }
 
               //page
               response.writeHead(200, {'Content-Type': 'text/html'});
 
               //render page and file
-              response.write(pageHead + pageTitle + pageHeader + ar + pageFooter + pageClose);
+              response.write(pageHead + pageTitle + pageHeader + x + pageFooter + pageClose);
 
               //send
               response.end();
