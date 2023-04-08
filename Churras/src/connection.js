@@ -9,7 +9,7 @@ var con = mysql.createConnection({
   database: `churras`,
 });
 
-//depois de pronto pode apagar
+//conferrir conecao 
 con.connect(function(err) {
   if (err){
     throw err;
@@ -18,29 +18,7 @@ con.connect(function(err) {
   }
 });
 
-/*const getDB = (sql) =>{
-   con.connect(function() {
-     con.query(sql, function (err, result) {
-        if (err) throw err;
-        return result
-      });
-  });
-}*/
-function getDB(sql){
-  con.query(sql, (err, result) => {
-    if (err) throw err;
-    return result;
-  });
-}
-// o valor vai como indefinido
-/*exports.getCards = function (){
-  var x = [];
-  var x = getDB(`SELECT * FROM churras.produtos_test;`);
-  console.log(getDB(`SELECT * FROM churras.produtos_test;`));
-  console.log(x);
-  return x;
-}*/
-//array n retorna pq ela sai como json
+// chamar os cards
 var getCards = () => {
   return new Promise((resolve, reject) => {
     con.query(`SELECT * FROM churras.produtos_test;`, (err, result) => {
