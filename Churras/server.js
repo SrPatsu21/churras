@@ -73,7 +73,19 @@ http.createServer(
                   pageTitle = `
                   <title>HOME</title>
                   `;
-                  pageMain = await File.getFile(`Churras/static/home.html`);
+                  
+                  pageMain = `
+                  <main class="flex mt-2vh">
+                      <!--add-->
+                  <div class="col-w-2 flex">
+                      <div class="col-12 prl-1pc">
+                      </div>
+                  </div>
+                  <!--card-->
+                  <div class="col-w-8 flex">
+                      <div id="cardBlock" class="col-12 prl-1pc flex flex-x-start flex-y-baseline">
+
+                  `;
 
                   //page
                   response.writeHead(200, {'Content-Type': 'text/html'});
@@ -92,17 +104,13 @@ http.createServer(
               <title>dataBank</title> 
               `;
               
-              var ar = await getDB.getCards();
-              var x = "";
-              for(const y in ar){
-                x += " " + ar[y].idprodutos_test;
-              }
+              pageMain = await File.getFile(`Churras/static/cards.html`);
 
               //page
               response.writeHead(200, {'Content-Type': 'text/html'});
 
               //render page and file
-              response.write(pageHead + pageTitle + pageHeader + x + pageFooter + pageClose);
+              response.write(pageHead + pageTitle + pageHeader + pageMain + pageFooter + pageClose);
 
               //send
               response.end();

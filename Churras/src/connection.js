@@ -28,4 +28,4 @@ var getCards = () => {
   });
 }
 
-module.exports = {getCards}
+module.exports.getCards = {getCards}
