@@ -76,7 +76,7 @@ http.createServer(
                   
                   pageMain = `
                   <main class="flex mt-2vh">
-                      <!--add-->
+                    <!--add-->
                   <div class="col-w-2 flex">
                       <div class="col-12 prl-1pc">
                       </div>
@@ -84,8 +84,58 @@ http.createServer(
                   <!--card-->
                   <div class="col-w-8 flex">
                       <div id="cardBlock" class="col-12 prl-1pc flex flex-x-start flex-y-baseline">
-
+                          
+                          <!--card div -->
+                  
+                          <script>
+                              let cardTimes = 3;
+                              for (cardTimes *= 4; cardTimes > 0; cardTimes--) {
+                                  
+                                  document.write(\`
+                                              <div class="col-w-3 flex ma-0pc">
+                                                  <div class="col-12 flex flex-x-center ma-2pc bord-card bg-card">
+                                                      <div class="col-12 pa-1pc-b">
+                                                          <img src="http://localhost:3729/static/img/logo.jpg" class="img-card" alt="">
+                                                      </div>
+                                                      <div class="col-12 displayBk">
+                                                          <a class="dropdown fz075 txtc col-12 pa-1pc txt-overF-PN cardTLink displayBk" href="#">16GBDDR31600MHZ /VXGAMING</a>
+                                                          <div class="dropdown-cont fz1">
+                                                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum libero quaerat ratione id, vel iusto. Laborum est molestias nihil.</p>
+                                                          </div>
+                                                      </div>
+                                                      <p class="fz075 txtc col-12 pa-1pc txtRed">R$: price</p>
+                                                      <div class="col-12 bord-line"></div>
+                          
+                                                      <!--buttons-->
+                                                      <div class="col-12 flex flex-x-around ma-2pc flex-y-stretch ">
+                                                      
+                                                          <div class="col-w-5">
+                                                              <button class="col-12 uppc bt-add-cart txtc fz075 h100pc">add to cart</button>
+                                                          </div>
+                          
+                                                          <div class="col-w-5 ">
+                                                              <button class="col-12 uppc bt-about fz075 h100pc">about</button>
+                                                          </div>
+                          
+                                                      </div>
+                          
+                                                  </div>
+                                              </div>
+                                          \`);
+                                  }
+                            
+                          </script>
+                  
+                      </div>
+                  </div>
+                  <!--add-->
+                  <div class="col-w-2 flex">
+                      <div class="col-12 prl-1pc">
+                      </div>
+                  </div>
+                  </main>
                   `;
+
 
                   //page
                   response.writeHead(200, {'Content-Type': 'text/html'});
