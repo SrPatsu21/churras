@@ -19,7 +19,7 @@ con.connect(function(err) {
 });
 
 // chamar os cards
-var getCards = () => {
+module.exports.getCards = () => {
   return new Promise((resolve, reject) => {
     con.query(`SELECT * FROM churras.produtos_test;`, (err, result) => {
       if (err) throw err;
@@ -27,5 +27,3 @@ var getCards = () => {
     })
   });
 }
-
-module.exports.getCards = {getCards}
